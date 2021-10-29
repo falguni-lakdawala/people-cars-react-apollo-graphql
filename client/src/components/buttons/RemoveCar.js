@@ -39,16 +39,6 @@ const RemoveCar = ({ id, year, make, model, price, personId }) => {
             price,
             personId
           }
-        },
-        update: (proxy) => {
-          const data = proxy.readQuery({ query: GET_PEOPLE })
-          proxy.writeQuery({
-            query: GET_PEOPLE,
-            data: {
-              ...data,
-              people: [...data.people]
-            }
-          })
         }
       })
     }

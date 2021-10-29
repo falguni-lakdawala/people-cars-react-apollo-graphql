@@ -83,7 +83,6 @@ const Car = props => {
         <div style={styles.innercardDiv}>
             <div> <b> Year: </b> {year}</div>
             <div> <b> Price: </b> {NumberFormat(price)}</div>
-            {/* <div> <b> PersonId: </b> {personId}</div> */}
         </div>
         
         </Card>

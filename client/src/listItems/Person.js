@@ -18,7 +18,6 @@ const Person = props => {
   const [pid] = useState(props.id)
   const [firstName, setFirstName] = useState(props.firstName)
   const [lastName, setLastName] = useState(props.lastName)
-  const [cars, setCars] = useState(props.cars)
   const [editMode, setEditMode] = useState(false)
   const styles = getStyles()
 
@@ -31,9 +30,6 @@ const Person = props => {
       case 'lastName':
         setLastName(value)
         break
-      case 'cars':
-          setCars(value)
-          break
       default:
         break
     }
@@ -65,8 +61,8 @@ const Person = props => {
           ]}
         >
             {
-              cars !== undefined &&
-              cars.map(({ id, year, make, model, price, personId }) => (
+              props.cars !== undefined &&
+              props.cars.map(({ id, year, make, model, price, personId }) => (
               
               <List.Item key={id}>
                 <Car key={id} id={id} year={year} make={make} model={model}

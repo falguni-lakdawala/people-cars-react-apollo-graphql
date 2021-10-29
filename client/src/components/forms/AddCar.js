@@ -52,35 +52,29 @@ const AddCar = () => {
           make,
           model,
           price,
-          personId
-        }
+          personId,
+        },
       },
+      update: (proxy, { data: {addCar} }) => {
+        try {
+        let data = proxy.readQuery({ query: GET_CARS, });
+        let latest = [...data.cars, addCar];
 
-      update: (proxy, { data: { addCar } }) => {
-        let cached = proxy.readQuery({ query: GET_CARS })
         proxy.writeQuery({
           query: GET_CARS,
           data: {
-            ...cached,
-            cars: [...cached.cars, addCar]
-          }
-        })
-        
+            cars: latest,
+          },
+        });
+      
+      }catch(error) {
+            console.error("Error" + error);      
+        }
+      },
+      
 
-
-
-        // data = proxy.readQuery({ query: GET_PEOPLE })
-        // proxy.writeQuery({
-        //   query: GET_PEOPLE,
-        //   data: {
-        //     ...data,
-        //     people: [...data.people]
-        //   }
-        // })
-      }
-
-    })
-  }
+    });
+  };
 
   return (
     <Form
